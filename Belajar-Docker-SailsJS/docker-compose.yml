@@ -1,0 +1,18 @@
+mariadb:
+  image: mariadb:10.1.30
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=microservicesailsjs
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD=''
+
+belajar-sailsjs-docker:
+  image: iqbal.dp/belajar-docker-sailsjs
+  ports:
+    - "1337:1337"
+  volumes:
+    - .:/belajar-sailsjs-docker
+  working_dir: /belajar-sailsjs-docker
+  command: sh ./install.sh
+  links:
+    - mariadb
